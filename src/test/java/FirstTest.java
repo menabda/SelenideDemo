@@ -21,7 +21,7 @@ public class FirstTest {
         elementsSteps.ClickOnLogin();
         elementsSteps.FillEmailAndPassword();
         Assert.assertEquals(elementsSteps.GetAlert(),"მეილი ან პაროლი არასწორია, თუ დაგავიწყდათ პაროლი,გთხოვთ ისარგებლოთ პაროლის აღდგენის ფუნქციით!");
-        elementsSteps.PasswordIsClear();
+        Assert.assertTrue(elementsSteps.PasswordIsClear());
     }
 
 }

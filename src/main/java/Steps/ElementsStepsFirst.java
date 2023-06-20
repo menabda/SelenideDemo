@@ -1,6 +1,7 @@
 package Steps;
 
 import Pages.ElementsPageFirst;
+import com.codeborne.selenide.Condition;
 
 public class ElementsStepsFirst {
     ElementsPageFirst elementsPage = new ElementsPageFirst();
@@ -13,9 +14,8 @@ public class ElementsStepsFirst {
         elementsPage.authorisation.click();
     }
 
-    public String GetAlert() throws InterruptedException {
-        Thread.sleep(3000);
-
+    public String GetAlert() {
+        elementsPage.alert.shouldBe(Condition.visible);
         return elementsPage.alert.getText();
     }
     public boolean PasswordIsClear() {
