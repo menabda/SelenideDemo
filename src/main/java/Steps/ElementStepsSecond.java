@@ -1,5 +1,6 @@
 package Steps;
 
+import Data.DataRegistration;
 import Pages.Home;
 import Pages.Registration;
 import com.codeborne.selenide.Condition;
@@ -7,6 +8,7 @@ import com.codeborne.selenide.Condition;
 public class ElementStepsSecond {
     Home home = new Home();
     Registration registration = new Registration();
+    DataRegistration dataRegistration = new DataRegistration();
 
     public ElementStepsSecond ClickLogin() {
         home.login.click();
@@ -30,7 +32,7 @@ public class ElementStepsSecond {
         return this;
     }
     public ElementStepsSecond AlertCheck() {
-        registration.nameAlert.shouldBe(Condition.visible);
+        registration.nameAlert.shouldHave(Condition.text(dataRegistration.alertMsg));
         return this;
     }
 
