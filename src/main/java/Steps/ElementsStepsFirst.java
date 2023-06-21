@@ -1,24 +1,31 @@
 package Steps;
 
-import Pages.ElementsPageFirst;
+import Data.DataLogin;
+import Pages.Home;
+import Pages.Login;
 import com.codeborne.selenide.Condition;
 
 public class ElementsStepsFirst {
-    ElementsPageFirst elementsPage = new ElementsPageFirst();
-    public void ClickOnLogin(){
-        elementsPage.login.click();
+    Home home = new Home();
+    Login login = new Login();
+    DataLogin data = new DataLogin();
+    public ElementsStepsFirst ClickOnLogin(){
+        home.login.click();
+        return this;
+
     }
-    public void FillEmailAndPassword(){
-        elementsPage.email.sendKeys("test@gmail.com");
-        elementsPage.password.sendKeys("123123asdASD");
-        elementsPage.authorisation.click();
+    public ElementsStepsFirst FillEmailAndPassword(){
+        login.email.sendKeys(data.email);
+        login.password.sendKeys(data.password);
+        login.authorisation.click();
+        return this;
     }
 
     public String GetAlert() {
-        elementsPage.alert.shouldBe(Condition.visible);
-        return elementsPage.alert.getText();
+        login.alert.shouldBe(Condition.visible);
+        return login.alert.getText();
     }
     public boolean PasswordIsClear() {
-        return elementsPage.password.text().equals("");
+        return login.password.text().equals("");
     }
 }
