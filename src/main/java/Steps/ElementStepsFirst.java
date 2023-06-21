@@ -5,27 +5,29 @@ import Pages.Home;
 import Pages.Login;
 import com.codeborne.selenide.Condition;
 
-public class ElementsStepsFirst {
+public class ElementStepsFirst {
     Home home = new Home();
     Login login = new Login();
     DataLogin data = new DataLogin();
-    public ElementsStepsFirst ClickOnLogin(){
+    public ElementStepsFirst ClickOnLogin(){
         home.login.click();
         return this;
 
     }
-    public ElementsStepsFirst FillEmailAndPassword(){
+    public ElementStepsFirst FillEmailAndPassword(){
         login.email.sendKeys(data.email);
         login.password.sendKeys(data.password);
         login.authorisation.click();
         return this;
     }
 
-    public String GetAlert() {
+    public ElementStepsFirst GetAlert() {
         login.alert.shouldBe(Condition.visible);
-        return login.alert.getText();
+        login.alert.shouldHave(Condition.text(data.errorMessage));
+        return this;
     }
-    public boolean PasswordIsClear() {
-        return login.password.text().equals("");
+    public ElementStepsFirst PasswordIsClear() {
+        login.password.shouldBe(Condition.empty);
+        return this;
     }
 }
