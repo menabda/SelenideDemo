@@ -13,9 +13,7 @@ public class RestCategory {
     public SelenideElement
         minprice = $(By.xpath("//*[@id='sidebar-container']//*[@id='minprice']")),
         maxprice = $(By.xpath("//*[@id='sidebar-container']//*[@id='maxprice']")),
-        searchBtn = $(By.xpath("(//*[@class='submit-button'])[2]"))
-
-            ;
+        searchBtn = $(By.xpath("(//*[@class='submit-button'])[2]"));
         public ElementsCollection prices = $$(By.xpath("//*[@class='discounted-prices']/p[1]"));
 
 }

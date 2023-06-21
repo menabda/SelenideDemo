@@ -3,21 +3,20 @@ import Steps.ElementStepsSecond;
 import Steps.ElementStepsThird;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
-public class AllTests {
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+@Listeners(Configs.class)
+public class AllTests extends Configs{
+
     ElementStepsFirst elementStepsFirst = new ElementStepsFirst();
     ElementStepsSecond elementStepsSecond = new ElementStepsSecond();
     ElementStepsThird elementStepsThird = new ElementStepsThird();
-    @BeforeClass
-    public void configs() {
-        Configuration.timeout = 20000;
-        Configuration.browser = "chrome";
-        Configuration.browserSize = "1920x1080";
 
-    }
+
     @BeforeMethod
     public void Swoop() {
         Selenide.open("https://swoop.ge/");
